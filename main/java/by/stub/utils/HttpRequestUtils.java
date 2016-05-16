@@ -5,6 +5,8 @@
 
 package by.stub.utils;
 
+import by.stub.common.Common;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -133,7 +135,9 @@ public final class HttpRequestUtils {
       stringBuilder.append(INDENT_UNIT + "PATH INFO: ").append(request.getPathInfo()).append(BR);
       stringBuilder.append(INDENT_UNIT + "PATH TRANSLATED: ").append(request.getPathTranslated()).append(BR);
 
-      stringBuilder.append(INDENT_UNIT + "PARAMETERS: ").append(HttpRequestUtils.debugStringParameters(request, 1)).append(BR);
+      if (!Common.POSTING_METHODS.contains(request.getMethod().toUpperCase())) {
+         stringBuilder.append(INDENT_UNIT + "PARAMETERS: ").append(HttpRequestUtils.debugStringParameters(request, 1)).append(BR);
+      }
 
       stringBuilder.append(INDENT_UNIT + "HEADERS: ").append(HttpRequestUtils.debugStringHeaders(request, 1));
 

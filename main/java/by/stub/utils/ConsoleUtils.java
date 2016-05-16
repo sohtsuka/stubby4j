@@ -75,6 +75,14 @@ public final class ConsoleUtils {
       }
    }
 
+   public static void logIncomingRequestBody(String body) {
+      if (debug) {
+         ANSITerminal.warn(" ***** [DEBUG INCOMING RAW HTTP REQUEST BODY DUMP] ***** ");
+         ANSITerminal.info(body);
+         ANSITerminal.warn(" ***** [DEBUG INCOMING RAW HTTP REQUEST BODY DUMP] ***** " + BR);
+      }
+   }
+
    public static void logAssertingRequest(final StubRequest assertingStubRequest) {
       if (debug) {
          ANSITerminal.warn(" ***** [DEBUG INCOMING ASSERTING HTTP REQUEST DUMP] ***** ");
